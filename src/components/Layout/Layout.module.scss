@@ -1,0 +1,23 @@
+@import '../../styles/shared-variables.module.scss';
+@mixin flex-options {
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  overflow-y: scroll;
+  height: 100vh;
+  background-color: $background-color;
+}
+
+.book {
+  &-list {
+    margin-top: 3rem;
+    @include flex-options;
+  }
+
+  &-details {
+    margin-top: 2rem;
+    @include flex-options;
+  }
+}

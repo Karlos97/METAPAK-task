@@ -1,0 +1,47 @@
+@import '../../../styles/shared-variables.module.scss';
+.app-header {
+  margin: 0;
+  background-color: white;
+  &-block {
+    // border-bottom: 1px solid #ced4da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-app-logo {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &-text {
+        font-size: $logo-font-size;
+        color: black;
+        font-family: 'Andada Pro', serif;
+        margin-left: 0.5rem;
+      }
+      &-image {
+        height: 32px;
+      }
+    }
+  }
+
+  & > h2 {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    background-color: #2ea3f2;
+  }
+}
+
+.back-button:hover,
+.back-button:active,
+.back-button.active {
+  color: rgba($color: $link-button-color, $alpha: 0.8);
+}
+
+.back-button {
+  text-decoration: none;
+  color: $link-button-color;
+  position: absolute;
+  transform: translateX(-18rem);
+}
