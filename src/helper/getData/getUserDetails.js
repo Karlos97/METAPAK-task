@@ -1,28 +1,25 @@
 import axios from 'axios';
 import { bookDetailsUrl } from '../../config/config';
 
-const getBookDetails = (bookId) =>
+const getBookDetails = (username) =>
   axios
-    .get(bookDetailsUrl + bookId)
+    .get(bookDetailsUrl + username)
     .then((res) => res.data)
-    .then((res) => {
-      const authorsLayout = res.volumeInfo.authors?.reduce(
-        (prev, next) => `${prev}, ${next}`,
-      );
-
-      const book = {
-        title: res.volumeInfo.title,
-        subtitle: res.volumeInfo.subtitle || null,
-        authors: authorsLayout,
-        publishedDate: res.volumeInfo.publishedDate,
-        description: res.volumeInfo.description || null,
-        thumbnail: res.volumeInfo.imageLinks?.thumbnail || null,
-        acsTokenLink: res.accessInfo.epub.acsTokenLink || null,
-        publicDomain: res.accessInfo.publicDomain,
-        id: res.id,
-      };
-
-      return book;
-    });
+    .then((user) => ({
+      login: user.login,
+      name: user.name || null,
+      id: user.id,
+      avatarUrl: user.avatar_url,
+      githubUrl: user.html_url,
+    }));
 
 export default getBookDetails;
+
+// - This view should contain information about the chosen user:
+//   - Avatar,
+//   - Name,
+//   - GitHub username,
+//   - Id,
+//   - Team badge,
+//   - Link do their profile on GitHub,
+// - A _Back_ button, which, when clicked, should redirect the user to the home page.

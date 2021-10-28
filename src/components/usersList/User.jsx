@@ -3,45 +3,43 @@ import { NavLink } from 'react-router-dom';
 import classes from './User.module.scss';
 import userBasicImage from '../../images/about.svg';
 import Button from '../UI/NavButton';
-const User = ({
-  title,
-  subtitle,
-  authors,
-  publishedDate,
-  description,
-  smallThumbnail,
-  id,
-}) => {
+import setBadge from '../../helper/setBadge';
+const User = ({ login, id, avatarUrl, githubUrl }) => {
   // const authorsLayout = authors?.reduce(
   //   (prev, next) => `${prev}, ${next}`,
   // );
+  // The team badge is assinged based on following rules:
+
+  // - If user ID is a multiple of 4 we want to assign a Team A badge,
+  // - If user ID is a multiple of 6 we want to assign a Team B badge,
+  // - If user ID is a multiple of both 4 and 6 we want to assign a Team C badge,
+  // - In every other case there should be no badge assigned.
+  let badge = setBadge(id, classes);
 
   return (
-    <li className={classes.user}>
+    <li className={classes.user} id={id}>
       <div className={classes['user-card-top']}>
         <img
           className={classes['user-card-top-image']}
           alt="User"
-          src={userBasicImage}
+          src={avatarUrl}
         />
 
         <div className={classes['user-card-top-description']}>
-          <p className={classes['user-card-top-description-login']}>
-            @userlogin
-          </p>
+          <p className={classes['user-card-top-description-login']}>{login}</p>
           <div>
-            <span className={classes['user-card-top-description-badge']}>
-              Team A
-            </span>
-            <p className={classes['user-card-top-description-id']}>ID: #2</p>
+            {badge}
+            <p className={classes['user-card-top-description-id']}>ID: #{id}</p>
           </div>
-          <a>GitHub page</a>
+          <a href={githubUrl} target="_blank">
+            GitHub page
+          </a>
         </div>
       </div>
 
       <div className={classes['user-footer']}>
         <Button
-          destinationPath={`/user/${id}`}
+          destinationPath={`/user/${login}`}
           buttonClass={classes['user-footer-button']}
         >
           Details

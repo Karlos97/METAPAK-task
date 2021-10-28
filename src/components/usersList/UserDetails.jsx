@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import Spinner from '../UI/Spinner';
-import classes from './Book.module.scss';
+import classes from './User.module.scss';
 
-import getBookDetails from '../../helper/getData/getUserDetails';
-import { setLoadingBookDetailsDataStatus } from '../../store/actions/booksActions';
+import getUserDetails from '../../helper/getData/getUserDetails';
+import { setLoadingUserDetailsDataStatus } from '../../store/actions/usersActions';
 import { setNotification } from '../../store/actions/notificationActions';
+import setBadge from '../../helper/setBadge';
 
-const BookDetails = () => {
+const UserDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const loadingBookDetailsData = useSelector(
-    ({ booksOptions }) => booksOptions?.loadingBookDetailsData
+  const loadingUserDetailsData = useSelector(
+    ({ usersOptions }) => usersOptions?.loadingUserDetailsData
   );
   const error = useSelector(
     ({ notification }) => notification.status !== 'error'
@@ -23,82 +24,76 @@ const BookDetails = () => {
     history.goBack();
   }
 
-  const [bookData, setBookData] = useState({
-    title: '',
-    subtitle: '',
-    authors: '',
-    publishedDate: '',
-    description: '',
-    thumbnail: '',
-    acsTokenLink: '',
-    publicDomain: '',
+  const [userData, setUserData] = useState({
+    login: '',
+    name: '',
     id: '',
+    avatarUrl: '',
+    githubUrl: '',
   });
 
-  const { bookId } = params;
+  const { userId } = params;
 
-  const {
-    title,
-    subtitle,
-    authors,
-    publishedDate,
-    description,
-    thumbnail,
-    acsTokenLink,
-    publicDomain,
-  } = bookData;
+  const { login, name, id, avatarUrl, githubUrl } = userData;
 
   useEffect(() => {
-    dispatch(setLoadingBookDetailsDataStatus(true));
+    dispatch(setLoadingUserDetailsDataStatus(true));
 
-    getBookDetails(bookId)
-      .then((book) => {
-        setBookData(book);
+    getUserDetails(userId)
+      .then((user) => {
+        setUserData(user);
         dispatch(
           setNotification({
             isActive: true,
             status: 'success',
-            title: 'Book details fetched.',
+            title: 'User details fetched.',
           })
         );
-        dispatch(setLoadingBookDetailsDataStatus(false));
+        dispatch(setLoadingUserDetailsDataStatus(false));
       })
       .catch(() => {
         dispatch(
           setNotification({
             isActive: true,
             status: 'error',
-            title: 'Problem with fetching book details.',
+            title: 'Problem with fetching user details.',
           })
         );
-        dispatch(setLoadingBookDetailsDataStatus(false));
+        dispatch(setLoadingUserDetailsDataStatus(false));
       });
-  }, [dispatch, bookId]);
+  }, [dispatch, userId]);
+
+  let badge = setBadge(id, classes);
 
   return (
     <>
-      <Spinner loading={loadingBookDetailsData} />
-      {!loadingBookDetailsData && error && (
-        <div className={classes.book}>
-          <img className={classes['book-image']} alt="Book" src={thumbnail} />
-          <div className={classes['book-top']}>
-            <p className={classes['book-top-title-details']}>{title}</p>
-            <p className={classes['book-top-subtitle']}>{subtitle}</p>
-          </div>
-          <h5 className={classes['book-authors']}>
-            {`${authors} (${publishedDate})`}
-          </h5>
-          {typeof acsTokenLink === 'string' && publicDomain && (
-            <a href={acsTokenLink} className={classes['book-download']}>
-              DOWNLOAD BOOK
-            </a>
-          )}
+      <Spinner loading={loadingUserDetailsData} />
+      {!loadingUserDetailsData && error && (
+        <div className={classes['user-card-top']}>
+          <img
+            className={classes['user-card-top-image']}
+            alt="User"
+            src={avatarUrl}
+          />
 
-          <div dangerouslySetInnerHTML={{ __html: description }} />
+          <div className={classes['user-card-top-description']}>
+            <p className={classes['user-card-top-description-login']}>
+              {login}
+            </p>
+            <div>
+              {badge}
+              <p className={classes['user-card-top-description-id']}>
+                ID: #{id}
+              </p>
+            </div>
+            <a href={githubUrl} target="_blank">
+              GitHub page
+            </a>
+          </div>
         </div>
       )}
     </>
   );
 };
 
-export default BookDetails;
+export default UserDetails;
