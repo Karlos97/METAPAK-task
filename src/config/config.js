@@ -4,6 +4,6 @@ export const booksPerFetch = 15;
 export const bookListUrl =
   'https://www.googleapis.com/books/v1/volumes?q=subject:';
 export const bookDetailsUrl =
-  'https://www.googleapis.com/books/v1/volumes/';
+  'https://api.github.com/users/';
 export const appNamePathUsedInRouting = '/Metapack-github-users-app';
-export const bookDetailsPathUsedInRouting = '/users/:userId';
+export const bookDetailsPathUsedInRouting = '/user/:userId';

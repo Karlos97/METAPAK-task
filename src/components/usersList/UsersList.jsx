@@ -1,9 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Fragment } from 'react/cjs/react.production.min';
 import classes from './UsersList.module.scss';
 import User from './User';
 import getUsersList from '../../helper/getData/getUsersList';
+import { getAndAddUsersToUserList } from '../../store/actions/usersActions';
+import {
+  selectShowLoadingUsersListData,
+  selectShowUsersList,
+} from '../../store/selectors/selectors';
+import Spinner from '../UI/Spinner';
 // import Spinner from '../UI/Spinner';
 // import { getAndAddBooksToBookList } from '../../store/actions/booksActions';
 // import {
@@ -12,37 +18,43 @@ import getUsersList from '../../helper/getData/getUsersList';
 // } from '../../store/selectors/selectors';
 
 const UsersList = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const loadingBookListDataSatus = useSelector(
   //   selectShowLoadingBookDetailsData
   // );
-  // const booksList = useSelector(selectShowBooksList);
+  const usersList = useSelector(selectShowUsersList);
+  const loadingUsersListDataSatus = useSelector(selectShowLoadingUsersListData);
 
-  // useEffect(() => {
-  //   if (!booksList) {
-  //     dispatch(getAndAddBooksToBookList());
-  //   }
-  // }, [dispatch, booksList]);
   useEffect(() => {
-    getUsersList();
-  });
+    if (!usersList) {
+      dispatch(getAndAddUsersToUserList());
+      console.log('dodaje');
+    }
+  }, [dispatch, usersList]);
+
+  console.log(usersList);
+  const usersListLayout = usersList?.map((user) => (
+    <User
+      login={user.login}
+      id={user.id}
+      key={user.id}
+      avatarUrl={user.avatarUrl}
+      githubUrl={user.githubUrl}
+    />
+  ));
+
+  // login: user.login,
+  // id: user.id,
+  // avatarUrl: user.avatar_url,
+  // githubUrl: user.html_url,
+
+  console.log(usersListLayout);
   return (
     <Fragment>
       <ul className={classes['books-list']}>
-        {/* {booksList?.map((book) => ( */}
-        <User
-          title={'book.title'}
-          subtitle={'book.subtitle'}
-          authors={'book.authors'}
-          publishedDate={'book.publishedDate'}
-          description={'book.description'}
-          smallThumbnail={'book.smallThumbnail'}
-          id={'book.id'}
-          key={'book.id'}
-        />
-        {/* ))} */}
-        {/* <Spinner loading={loadingBookListDataSatus} /> */}
+        {usersListLayout}
+        <Spinner loading={loadingUsersListDataSatus} />
       </ul>
     </Fragment>
   );

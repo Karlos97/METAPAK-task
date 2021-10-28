@@ -1,21 +1,20 @@
 import axios from 'axios';
 import { bookListUrl, booksPerFetch } from '../../config/config';
 
-const getUsersList = (genre = 'fiction', startIndex = 0) => {
+const getUsersList = (startIndex = 0) => {
   const bookstListLink = `https://api.github.com/users`;
 
-  return axios.get(bookstListLink).then((res) => {
-    console.log(res);
-    // res.data?.items.map((book) => ({
-    //   title: book.volumeInfo.title,
-    //   subtitle: book.volumeInfo.subtitle,
-    //   authors: book.volumeInfo.authors,
-    //   publishedDate: book.volumeInfo.publishedDate,
-    //   description: book.volumeInfo.description,
-    //   smallThumbnail: book.volumeInfo.imageLinks.smallThumbnail,
-    //   id: book.id,
-    // })),
-  });
+  return axios
+    .get(bookstListLink)
+    .then((res) => res.data)
+    .then((res) =>
+      res?.map((user) => ({
+        login: user.login,
+        id: user.id,
+        avatarUrl: user.avatar_url,
+        githubUrl: user.html_url,
+      }))
+    );
 };
 
 export default getUsersList;

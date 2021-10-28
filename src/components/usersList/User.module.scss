@@ -8,6 +8,10 @@ $border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
 }
+@mixin badge-style {
+  padding: 2px 4px 2px 4px;
+  border-radius: 2px;
+}
 
 .user {
   width: 25rem;
@@ -31,10 +35,21 @@ $border-radius: 4px;
         margin-bottom: 6px;
       }
       &-badge {
-        padding: 2px 4px 2px 4px;
-        border-radius: 2px;
-        background-color: #a5d8ff;
-        color: #3b5bdb;
+        &-a {
+          @include badge-style;
+          background-color: $team-a-background-color;
+          color: $team-a-text-color;
+        }
+        &-b {
+          @include badge-style;
+          background-color: $team-b-background-color;
+          color: $team-b-text-color;
+        }
+        &-c {
+          @include badge-style;
+          background-color: $team-c-background-color;
+          color: $team-c-text-color;
+        }
       }
       &-id {
         display: inline-block;
