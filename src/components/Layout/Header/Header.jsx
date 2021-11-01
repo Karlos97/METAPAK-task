@@ -7,7 +7,7 @@ import Button from '../../UI/NavButton';
 
 const Header = ({ isMainpage }) => (
   <header className={classes['app-header']}>
-    <h2>This is recruitment task for Metapack company.</h2>
+    <h1>This is recruitment task for Metapack company.</h1>
     {/* <img
         src={MetapackLogo}
         alt="Metapack logo"

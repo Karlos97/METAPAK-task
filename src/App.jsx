@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 import BooksList from './components/usersList/UsersList';
 import Layout from './components/Layout/Layout';
-import BookDetails from './components/usersList/UserDetails';
+import BookDetails from './components/usersList/UserDetails/UserDetails';
 import {
   appNamePathUsedInRouting,
   bookDetailsPathUsedInRouting,

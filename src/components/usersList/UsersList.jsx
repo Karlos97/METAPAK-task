@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Fragment } from 'react/cjs/react.production.min';
 import classes from './UsersList.module.scss';
-import User from './User';
+import User from './User/User';
 import getUsersList from '../../helper/getData/getUsersList';
 import { getAndAddUsersToUserList } from '../../store/actions/usersActions';
 import {
@@ -52,7 +52,7 @@ const UsersList = () => {
   console.log(usersListLayout);
   return (
     <Fragment>
-      <ul className={classes['books-list']}>
+      <ul className={classes['users-list']}>
         {usersListLayout}
         <Spinner loading={loadingUsersListDataSatus} />
       </ul>

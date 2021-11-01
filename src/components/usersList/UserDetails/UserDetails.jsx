@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import Spinner from '../UI/Spinner';
-import classes from './User.module.scss';
+import Spinner from '../../UI/Spinner';
+import classes from './UserDetails.module.scss';
 
-import getUserDetails from '../../helper/getData/getUserDetails';
-import { setLoadingUserDetailsDataStatus } from '../../store/actions/usersActions';
-import { setNotification } from '../../store/actions/notificationActions';
-import setBadge from '../../helper/setBadge';
+import getUserDetails from '../../../helper/getData/getUserDetails';
+import { setLoadingUserDetailsDataStatus } from '../../../store/actions/usersActions';
+import { setNotification } from '../../../store/actions/notificationActions';
+import setBadge from '../../../helper/setBadge';
+import UserCardTop from '../UserCardTop/UserCardTop';
 
 const UserDetails = () => {
   const dispatch = useDispatch();
@@ -62,14 +63,8 @@ const UserDetails = () => {
         dispatch(setLoadingUserDetailsDataStatus(false));
       });
   }, [dispatch, userId]);
-
-  let badge = setBadge(id, classes);
-
-  return (
-    <>
-      <Spinner loading={loadingUserDetailsData} />
-      {!loadingUserDetailsData && error && (
-        <div className={classes['user-card-top']}>
+  {
+    /* <div className={classes['user-card-top']}>
           <img
             className={classes['user-card-top-image']}
             alt="User"
@@ -90,6 +85,30 @@ const UserDetails = () => {
               GitHub page
             </a>
           </div>
+        </div>*/
+  }
+  // let badge = setBadge(id, classes);
+
+  return (
+    <>
+      <Spinner loading={loadingUserDetailsData} />
+      {!loadingUserDetailsData && error && (
+        <div className={classes['user-details']}>
+          <h2>Profile </h2>
+          <UserCardTop
+            avatarUrl={avatarUrl}
+            login={login}
+            id={id}
+            githubUrl={githubUrl}
+          />
+
+          <h2>Repositories</h2>
+          <p>Repositories count:</p>
+          <p>Repositories list:</p>
+          <ul>
+            <li>test 1</li>
+            <li>test 1</li>
+          </ul>
         </div>
       )}
     </>

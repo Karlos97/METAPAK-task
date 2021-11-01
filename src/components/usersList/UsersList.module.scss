@@ -1,12 +1,9 @@
-.books-list {
+.users-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3rem;
-  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem;
+  width: 106rem;
   padding: 0;
-
-  & > li {
-    list-style-type: none;
-  }
 }

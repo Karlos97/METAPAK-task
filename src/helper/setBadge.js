@@ -4,21 +4,21 @@ const setBadge = (id, classes) => {
   const multipleOfSix = id % 6 === 0;
   if (multipleOfFour) {
     badge = (
-      <span className={classes['user-card-top-description-badge-a']}>
-        badge A
+      <span className={classes['user-card-top-description-rank-badge-a']}>
+        Team A
       </span>
     );
   } else if (multipleOfSix) {
     badge = (
-      <span className={classes['user-card-top-description-badge-b']}>
-        badge B
+      <span className={classes['user-card-top-description-rank-badge-b']}>
+        Team B
       </span>
     );
   }
   if (multipleOfFour && multipleOfSix) {
     badge = (
-      <span className={classes['user-card-top-description-badge-c']}>
-        badge C
+      <span className={classes['user-card-top-description-rank-badge-c']}>
+        Team C
       </span>
     );
   }

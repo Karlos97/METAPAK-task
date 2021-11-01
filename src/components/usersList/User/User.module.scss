@@ -1,0 +1,41 @@
+@import '../../../styles/shared-variables.module.scss';
+$border-radius: 4px;
+@mixin user-title {
+  display: block;
+  margin: 1rem 0 0.5rem 3rem;
+  height: 1rem;
+  color: #2ea3f2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.user {
+  width: 25rem;
+  border-radius: $border-radius;
+  background-color: white;
+  // margin-bottom: 2rem;
+  display: flex;
+  // flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0 1.5rem 1.5rem 0;
+  list-style-type: none;
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    border-top: solid 1px $background-color;
+    &-button {
+      color: #2ea3f2;
+      text-decoration: none;
+      font-weight: bold;
+      // cursor: pointer;
+    }
+    // &:hover {
+    //   color: black;
+    //   font-size: 1.1rem;
+    // }
+  }
+}
