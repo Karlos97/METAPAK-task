@@ -1,5 +1,37 @@
+@import '../../../styles//view-port.scss';
+@import '../../../styles/shared-variables.module.scss';
 .user-details {
   width: 35rem;
-  height: 25rem;
   background-color: white;
+  padding: 20px;
+
+  &-header-2 {
+    @include alignItemsCenter;
+    margin: 0;
+    height: $logo-font-size;
+    @include respond(tab-port) {
+      font-size: $unspecified-phone-media-font-size-big;
+    }
+    @include respond(phone) {
+      font-size: $unspecified-phone-media-font-size-big;
+    }
+  }
+  &-header-3 {
+    @include respond(tab-port) {
+      // width: 80rem;
+    }
+    @include respond(phone) {
+      font-size: $unspecified-phone-media-font-size-small;
+    }
+  }
+  &-paragraph {
+    font-weight: 200;
+    margin: 0;
+    @include respond(tab-port) {
+      font-size: $unspecified-phone-media-font-size-small;
+    }
+    @include respond(phone) {
+      font-size: $unspecified-phone-media-font-size-small;
+    }
+  }
 }

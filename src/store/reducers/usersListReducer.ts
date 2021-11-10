@@ -11,6 +11,7 @@ const usersListReducer = (
   switch (action.type) {
     case ADD_USERS_TO_USERS_LIST: {
       const users = [...state, ...action.payload];
+<<<<<<< HEAD
       // const users = state ? [...state, ...action.payload] : action.payload;
 
       // const userListAfterFilteringSameIds = [
@@ -19,6 +20,13 @@ const usersListReducer = (
 
       // return userListAfterFilteringSameIds as UserListItem[];
       return users;
+=======
+      const userListAfterFilteringSameIds = [
+        ...new Set(users.map((user) => user.id)),
+      ].map((id) => users.find((user) => user.id === id));
+
+      return userListAfterFilteringSameIds as UserListItem[];
+>>>>>>> styling
     }
 
     default: {

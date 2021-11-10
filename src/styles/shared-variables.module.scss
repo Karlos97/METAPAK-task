@@ -12,3 +12,10 @@ $team-b-background-color: #ffd6c8;
 $team-b-text-color: #c83300;
 $team-c-background-color: #a6fcc8;
 $team-c-text-color: #059e42;
+@mixin alignItemsCenter {
+  display: flex;
+  align-items: center;
+}
+$unspecified-phone-media-font-size-big: 18px;
+$unspecified-phone-media-font-size-medium: 16px;
+$unspecified-phone-media-font-size-small: 12px;

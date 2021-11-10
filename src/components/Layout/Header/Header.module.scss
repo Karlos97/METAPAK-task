@@ -1,13 +1,14 @@
 @import '../../../styles/shared-variables.module.scss';
+@import '../../../styles//view-port.scss';
 .app-header {
   margin: 0;
   background-color: white;
+  // width: 113rem;
+  width: 100%;
   &-block {
-    // border-bottom: 1px solid #ced4da;
     display: flex;
     align-items: center;
     justify-content: center;
-
     &-app-logo {
       height: 48px;
       display: flex;
@@ -24,24 +25,37 @@
       }
     }
   }
-
-  & > h1 {
+  &-1 {
     text-align: center;
     margin: 0;
     width: 100%;
     background-color: #2ea3f2;
+
+    @include respond(tab-port) {
+      font-size: 20px;
+    }
+    @include respond(phone) {
+      width: 42rem;
+      font-size: 16px;
+    }
   }
 }
-
 .back-button:hover,
 .back-button:active,
 .back-button.active {
   color: rgba($color: $link-button-color, $alpha: 0.8);
 }
-
 .back-button {
   text-decoration: none;
   color: $link-button-color;
   transform: translateX(-18rem);
-  // position: absolute;
+  font-size: $font-font-size-small;
+  @include respond(tab-port) {
+    transform: translateX(-12rem);
+    font-size: $unspecified-phone-media-font-size-medium;
+  }
+  @include respond(phone) {
+    transform: translateX(-8rem);
+    font-size: $unspecified-phone-media-font-size-small;
+  }
 }

@@ -1,9 +1,14 @@
 import axios, { AxiosResponse } from 'axios';
 import { userDetailsUrl } from '../../config/config';
+<<<<<<< HEAD
 import { UserDetails, UserListItem } from '../../types/userType';
 
 // .get<UserListItem[]>(bookstListLink)
 // .then((res: AxiosResponse<UserListItem[]>) => {
+=======
+import { UserDetails } from '../../types/userType';
+
+>>>>>>> styling
 const getUserDetails = (username: string) =>
   axios
     .get<UserDetails>(userDetailsUrl + username)
@@ -20,6 +25,7 @@ const getUserDetails = (username: string) =>
     }));
 
 export default getUserDetails;
+<<<<<<< HEAD
 
 // - This view should contain information about the chosen user:
 //   - Avatar,
@@ -29,3 +35,5 @@ export default getUserDetails;
 //   - Team badge,
 //   - Link do their profile on GitHub,
 // - A _Back_ button, which, when clicked, should redirect the user to the home page.
+=======
+>>>>>>> styling

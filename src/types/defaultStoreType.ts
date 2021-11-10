@@ -6,5 +6,8 @@ export interface defaultStoreStateType {
   loadingUsersListData: boolean;
   loadingUserDetailsData: boolean;
   userList: UserListItem[];
+<<<<<<< HEAD
   // userList: (UserType | undefined)[];
+=======
+>>>>>>> styling
 }

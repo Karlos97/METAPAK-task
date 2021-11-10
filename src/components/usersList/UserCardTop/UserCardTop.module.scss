@@ -1,25 +1,65 @@
+@import '../../../styles//view-port.scss';
 @import '../../../styles/shared-variables.module.scss';
-$border-radius: 4px;
 @mixin badge-style {
   font-size: $font-font-size-small;
   padding: 2px 4px 2px 4px;
   border-radius: 2px;
   margin-right: 10px;
 }
-.user-card-top {
-  // height: auto;
+@mixin user-card-flex-style {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+}
+
+.user-details-card-top {
+  @include user-card-flex-style;
+  margin: 15px 0 30px 0;
   &-description {
-    // height: inherit;
-    margin: 0;
-    &-login {
-      font-size: 18px;
-      margin: 0;
+    &-header {
+      &-3 {
+        @include alignItemsCenter;
+        font-size: $logo-font-size;
+        height: $logo-font-size;
+        margin: 0 0 6px;
+        font-weight: 200;
+        @include respond(tab-port) {
+          font-size: $unspecified-phone-media-font-size-big;
+        }
+      }
     }
     &-rank {
-      margin: 6px 0 8px 0;
+      @include alignItemsCenter;
+
+      height: 22px;
+      margin: 6px 0 24px 0;
+    }
+  }
+}
+.user-card-top {
+  @include user-card-flex-style;
+  padding: 20px;
+  @include respond(tab-port) {
+    padding: 10px; // zmienilem narzucony padding, poniewaz napisy sie rozjezdzaly
+  }
+
+  &-description {
+    margin: 0;
+    &-login {
+      height: 18px;
+      font-size: 18px;
+      margin: 0;
+      @include alignItemsCenter;
+      @include respond(tab-port) {
+        font-size: $unspecified-phone-media-font-size-medium;
+      }
+      @include respond(phone) {
+        font-size: $unspecified-phone-media-font-size-medium;
+      }
+    }
+    &-rank {
+      @include alignItemsCenter;
+      height: 22px;
+      margin: 6px 0 12px 0;
       &-badge {
         &-a {
           @include badge-style;
@@ -41,6 +81,7 @@ $border-radius: 4px;
         display: inline-block;
         font-size: $font-font-size-small;
         color: $secondary-text-color;
+        margin: 0;
       }
     }
 
@@ -55,14 +96,5 @@ $border-radius: 4px;
       color: $secondary-text-color;
       font-size: $font-font-size-small;
     }
-  }
-
-  &-image {
-    max-height: 6rem;
-    max-width: 6rem;
-    border-radius: $border-radius;
-    height: inherit;
-    width: 5rem;
-    margin-right: 12px;
   }
 }
