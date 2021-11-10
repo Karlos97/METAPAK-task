@@ -1,10 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import classes from './User.module.scss';
-import userBasicImage from '../../../images/about.svg';
-import NavButton from '../../UI/NavButton';
-// import setBadge from '../../../helper/Badge';
-import GithubLogo from '../../../images/github/GitHub-Mark-32px.png';
+import NavButton from '../../UI/NavButton/NavButton';
 import UserCardTop from '../UserCardTop/UserCardTop';
 import { UserListItem } from '../../../types/userType';
 
@@ -21,6 +17,7 @@ const User: React.FC<IUserProps> = ({ userListItem }) => {
         login={login}
         id={id}
         html_url={html_url}
+        isUserDetails={false}
       />
 
       <div className={classes['user-footer']}>

@@ -18,8 +18,6 @@ export const selectShowLoadingUsersListData = ({
 }: IStore): boolean =>
   requestsStatus[LOADING_USERS_LIST] === RequestStatus.ONGOING;
 
-<<<<<<< HEAD
-=======
 export const selectShowUsersListFetchStatus = ({
   requestsStatus,
 }: IStore): string => requestsStatus[LOADING_USERS_LIST];
@@ -31,7 +29,6 @@ export const selectShowUserDetailsFetchStatus = ({
 // }: IStore): boolean =>
 //   requestsStatus[LOADING_USERS_LIST] === RequestStatus.ERROR;
 
->>>>>>> styling
 export const selectUsersList = ({ usersList }: IStore): UserListItem[] =>
   usersList.length ? usersList : [];
 
@@ -39,13 +36,8 @@ export const selectShowNotification = ({
   notification,
 }: IStore): NotificationType => notification;
 
-<<<<<<< HEAD
-export const selectIsError = ({ notification }: IStore): boolean =>
-  notification.status !== 'error';
-=======
 // export const selectIsError = ({ notification }: IStore): boolean =>
 //   notification.status !== 'error';
->>>>>>> styling
 export const selectShowPage = ({ page }: IStore): number => page;
 // export const selectUserItemById = (
 //   { usersList }: IStore,

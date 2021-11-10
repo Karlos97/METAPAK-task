@@ -22,25 +22,6 @@ export const getAndAddUsersToUserList =
       .then((users) => {
         // console.log(users)
         // dispatch(addUsersToUserList(users as UserListItem[]));
-<<<<<<< HEAD
-        dispatch(addUsersToUserList(users));
-        dispatch(
-          setNotification({
-            status: 'success',
-            title: 'User list fetched.',
-          })
-        );
-        dispatch(setLoadingUsersListDataStatus('FULFILLED'));
-        dispatch(setPage(usersPerPage));
-      })
-      .catch(() => {
-        dispatch(
-          setNotification({
-            status: 'error',
-            title: 'Problem with fetching user list.',
-          })
-        );
-=======
         dispatch(setLoadingUsersListDataStatus('FULFILLED'));
         dispatch(addUsersToUserList(users));
         // dispatch(
@@ -58,7 +39,6 @@ export const getAndAddUsersToUserList =
         //     title: 'Problem with fetching user list.',
         //   })
         // );
->>>>>>> styling
         dispatch(setLoadingUsersListDataStatus('ERROR'));
       });
   };

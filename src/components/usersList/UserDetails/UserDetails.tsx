@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import Spinner from '../../UI/Spinner';
+import Spinner from '../../UI/Spinner/Spinner';
 import classes from './UserDetails.module.scss';
-
 import getUserDetails from '../../../helper/getData/getUserDetails';
 import { setLoadingUserDetailsDataStatus } from '../../../store/actions/notificationActions';
 import UserCardTop from '../UserCardTop/UserCardTop';
 import {
-  selectIsError,
   selectShowLoadingUserDetailsData,
+  selectShowUserDetailsFetchStatus,
 } from '../../../store/selectors/selectors';
 import { UserListItem } from '../../../types/userType';
+import getUserRepos from '../../../helper/getData/getUserRepos';
 
 const UserDetails: React.FC = () => {
   const dispatch = useDispatch();
   const { userId } = useParams<{ userId: string }>();
-  // console.log(params);
   const loadingUserDetailsData = useSelector(selectShowLoadingUserDetailsData);
-  const error = useSelector(selectIsError);
+  const userDetailsFetchStatusFailed =
+    useSelector(selectShowUserDetailsFetchStatus) === 'ERROR';
   const history = useHistory();
-  if (!error) {
+  if (userDetailsFetchStatusFailed) {
     history.goBack();
   }
 
@@ -31,8 +31,9 @@ const UserDetails: React.FC = () => {
     avatarUrl: '',
     githubUrl: '',
   });
-
-  // const { userId } = params;
+  const [userRepos, setUserRepos] = useState({
+    name: '',
+  });
 
   const { login, name, id, avatar_url, html_url }: UserListItem = userData;
 
@@ -63,52 +64,44 @@ const UserDetails: React.FC = () => {
         // );
         dispatch(setLoadingUserDetailsDataStatus('ERROR'));
       });
+    getUserRepos(userId).then((repos) => {
+      console.log(repos);
+      // setUserRepos(repos);
+    });
+    // .catch(() => {});
   }, [dispatch, userId]);
-  {
-    /* <div className={classes['user-card-top']}>
-          <img
-            className={classes['user-card-top-image']}
-            alt="User"
-            src={avatarUrl}
-          />
-
-          <div className={classes['user-card-top-description']}>
-            <p className={classes['user-card-top-description-login']}>
-              {login}
-            </p>
-            <div>
-              {badge}
-              <p className={classes['user-card-top-description-id']}>
-                ID: #{id}
-              </p>
-            </div>
-            <a href={githubUrl} target="_blank">
-              GitHub page
-            </a>
-          </div>
-        </div>*/
-  }
-  // let badge = setBadge(id, classes);
-
+  console.log(userRepos);
   return (
     <>
-      <Spinner loading={loadingUserDetailsData} />
-      {!loadingUserDetailsData && error && (
+      {loadingUserDetailsData && <Spinner loading={loadingUserDetailsData} />}
+      {!loadingUserDetailsData && (
         <div className={classes['user-details']}>
-          <h2>Profile </h2>
+          <h2 className={classes['user-details-header-2']}>Profile </h2>
+
           <UserCardTop
             avatar_url={avatar_url}
             login={login}
             id={id}
             html_url={html_url}
+            isUserDetails={true}
           />
 
-          <h2>Repositories</h2>
-          <p>Repositories count:</p>
-          <p>Repositories list:</p>
+          <h2 className={classes['user-details-header-2']}>Repositories</h2>
+          <h3 className={classes['user-details-header-3']}>
+            Repositories count:{' '}
+            <span className={classes['user-details-paragraph']}>test 1</span>
+          </h3>
+          <h3 className={classes['user-details-header-3']}>
+            Repositories list:{' '}
+            <span className={classes['user-details-paragraph']}>test 1</span>
+          </h3>
           <ul>
-            <li>test 1</li>
-            <li>test 1</li>
+            <li>
+              <p className={classes['user-details-paragraph']}>test 1</p>
+            </li>
+            <li>
+              <p className={classes['user-details-paragraph']}>test 1</p>
+            </li>
           </ul>
         </div>
       )}

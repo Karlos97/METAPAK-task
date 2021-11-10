@@ -1,46 +1,46 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import Badge from '../../../helper/Badge';
+import Badge from '../Badge/Badge';
 import GithubLogo from '../../../images/github/GitHub-Mark-32px.png';
-import { selectUsersList } from '../../../store/selectors/selectors';
 import { UserListItem } from '../../../types/userType';
+import UserImage from '../UserImage/UserImage';
 import classes from './UserCardTop.module.scss';
 
-// interface IUserCardTopProps {
-//   id: number;
-// }
+interface IUserDetails {
+  isUserDetails: boolean;
+}
 
-const UserCardTop: React.FC<UserListItem> = ({
+const UserCardTop: React.FC<UserListItem & IUserDetails> = ({
   login,
   id,
   html_url,
   avatar_url,
+  isUserDetails,
 }) => {
-  // The team badge is assinged based on following rules:
-  // - If user ID is a multiple of 4 we want to assign a Team A badge,
-  // - If user ID is a multiple of 6 we want to assign a Team B badge,
-  // - If user ID is a multiple of both 4 and 6 we want to assign a Team C badge,
-  // - In every other case there should be no badge assigned.
-  // const setBadge: React.FC<Props> = ({ id, classes }: Props) => {
-  const test: UserListItem[] = useSelector(selectUsersList);
-  console.log('user details', test);
-  return (
-    <div className={classes['user-card-top']}>
-      <img
-        className={classes['user-card-top-image']}
-        alt="User"
-        src={avatar_url}
-      />
+  const userCardTopStyle = isUserDetails
+    ? classes['user-details-card-top']
+    : classes['user-card-top'];
+  const userCardTopDescriptionRank = isUserDetails
+    ? classes['user-details-card-top-description-rank']
+    : classes['user-card-top-description-rank'];
 
+  return (
+    <div className={userCardTopStyle}>
+      <UserImage avatar_url={avatar_url} isUserDetails={isUserDetails} />
       <div className={classes['user-card-top-description']}>
+        {isUserDetails ? (
+          <h3
+            className={`${classes['user-details-card-top-description-header-3']} ${classes['user-details-card-top-description-header-3']}`}
+          >
+            username
+          </h3>
+        ) : null}
         <p className={classes['user-card-top-description-login']}>{login}</p>
-        <div className={classes['user-card-top-description-rank']}>
+        <div className={userCardTopDescriptionRank}>
           <Badge id={id} classes={classes} />
           <p className={classes['user-card-top-description-rank-id']}>
             ID: #{id}
           </p>
         </div>
-
         <a
           href={html_url}
           target="_blank"

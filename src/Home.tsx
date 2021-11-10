@@ -8,11 +8,7 @@ import {
   userDetailsPathUsedInRouting,
 } from './config/config';
 
-<<<<<<< HEAD
-import './styles/home.css';
-=======
 import './styles/home.scss';
->>>>>>> styling
 
 const Home: React.FC = () => (
   <BrowserRouter>
