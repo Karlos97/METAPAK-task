@@ -1,23 +1,19 @@
 @import '../../styles/shared-variables.module.scss';
 @mixin flex-options {
-  display: flex;
-  justify-content: center;
 }
-
 .app {
   overflow-y: scroll;
   height: 100vh;
   background-color: $background-color;
 }
-
-.book {
+.user {
   &-list {
-    margin-top: 3rem;
-    @include flex-options;
+    display: flex;
+    justify-content: center;
   }
-
   &-details {
-    margin-top: 2rem;
-    @include flex-options;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
   }
 }

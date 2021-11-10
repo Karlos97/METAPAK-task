@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import Spinner from '../../UI/Spinner';
+import Spinner from '../../UI/Spinner/Spinner';
 import classes from './UserDetails.module.scss';
-
 import getUserDetails from '../../../helper/getData/getUserDetails';
 import { setLoadingUserDetailsDataStatus } from '../../../store/actions/usersActions';
 import { setNotification } from '../../../store/actions/notificationActions';
 import setBadge from '../../../helper/setBadge';
 import UserCardTop from '../UserCardTop/UserCardTop';
+<<<<<<< Updated upstream:src/components/usersList/UserDetails/UserDetails.jsx
+=======
+import {
+  selectShowLoadingUserDetailsData,
+  selectShowUserDetailsFetchStatus,
+} from '../../../store/selectors/selectors';
+import { UserListItem } from '../../../types/userType';
+import getUserRepos from '../../../helper/getData/getUserRepos';
+>>>>>>> Stashed changes:src/components/usersList/UserDetails/UserDetails.tsx
 
 const UserDetails = () => {
   const dispatch = useDispatch();
+<<<<<<< Updated upstream:src/components/usersList/UserDetails/UserDetails.jsx
   const params = useParams();
 
   const loadingUserDetailsData = useSelector(
@@ -20,8 +29,14 @@ const UserDetails = () => {
   const error = useSelector(
     ({ notification }) => notification.status !== 'error'
   );
+=======
+  const { userId } = useParams<{ userId: string }>();
+  const loadingUserDetailsData = useSelector(selectShowLoadingUserDetailsData);
+  const userDetailsFetchStatusFailed =
+    useSelector(selectShowUserDetailsFetchStatus) === 'ERROR';
+>>>>>>> Stashed changes:src/components/usersList/UserDetails/UserDetails.tsx
   const history = useHistory();
-  if (!error) {
+  if (userDetailsFetchStatusFailed) {
     history.goBack();
   }
 
@@ -32,8 +47,14 @@ const UserDetails = () => {
     avatarUrl: '',
     githubUrl: '',
   });
+<<<<<<< Updated upstream:src/components/usersList/UserDetails/UserDetails.jsx
 
   const { userId } = params;
+=======
+  const [userRepos, setUserRepos] = useState({
+    name: '',
+  });
+>>>>>>> Stashed changes:src/components/usersList/UserDetails/UserDetails.tsx
 
   const { login, name, id, avatarUrl, githubUrl } = userData;
 
@@ -62,52 +83,48 @@ const UserDetails = () => {
         );
         dispatch(setLoadingUserDetailsDataStatus(false));
       });
+    getUserRepos(userId).then((repos) => {
+      console.log(repos);
+      // setUserRepos(repos);
+    });
+    // .catch(() => {});
   }, [dispatch, userId]);
-  {
-    /* <div className={classes['user-card-top']}>
-          <img
-            className={classes['user-card-top-image']}
-            alt="User"
-            src={avatarUrl}
-          />
-
-          <div className={classes['user-card-top-description']}>
-            <p className={classes['user-card-top-description-login']}>
-              {login}
-            </p>
-            <div>
-              {badge}
-              <p className={classes['user-card-top-description-id']}>
-                ID: #{id}
-              </p>
-            </div>
-            <a href={githubUrl} target="_blank">
-              GitHub page
-            </a>
-          </div>
-        </div>*/
-  }
-  // let badge = setBadge(id, classes);
-
+  console.log(userRepos);
   return (
     <>
       <Spinner loading={loadingUserDetailsData} />
-      {!loadingUserDetailsData && error && (
+      {!loadingUserDetailsData && (
         <div className={classes['user-details']}>
-          <h2>Profile </h2>
+          <h2 className={classes['user-details-header-2']}>Profile </h2>
+
           <UserCardTop
             avatarUrl={avatarUrl}
             login={login}
             id={id}
+<<<<<<< Updated upstream:src/components/usersList/UserDetails/UserDetails.jsx
             githubUrl={githubUrl}
+=======
+            html_url={html_url}
+            isUserDetails={true}
+>>>>>>> Stashed changes:src/components/usersList/UserDetails/UserDetails.tsx
           />
 
-          <h2>Repositories</h2>
-          <p>Repositories count:</p>
-          <p>Repositories list:</p>
+          <h2 className={classes['user-details-header-2']}>Repositories</h2>
+          <h3 className={classes['user-details-header-3']}>
+            Repositories count:{' '}
+            <span className={classes['user-details-paragraph']}>test 1</span>
+          </h3>
+          <h3 className={classes['user-details-header-3']}>
+            Repositories list:{' '}
+            <span className={classes['user-details-paragraph']}>test 1</span>
+          </h3>
           <ul>
-            <li>test 1</li>
-            <li>test 1</li>
+            <li>
+              <p className={classes['user-details-paragraph']}>test 1</p>
+            </li>
+            <li>
+              <p className={classes['user-details-paragraph']}>test 1</p>
+            </li>
           </ul>
         </div>
       )}

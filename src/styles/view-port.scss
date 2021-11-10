@@ -1,0 +1,23 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    // dla telefonu 1 kolumna pojawia sie juz < 475px poniewaz kiepsko wyglada blok usera pry pokazywaniu 2 kolumn
+    @media only screen and (max-width: 26.25em) {
+      @content;
+    } //420px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 50em) {
+      @content;
+    } //800px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 62.5em) {
+      @content;
+    } //1000px
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 70.625em) {
+      @content;
+    } //1130px
+  }
+}

@@ -7,6 +7,7 @@ import {
   appNamePathUsedInRouting,
   bookDetailsPathUsedInRouting,
 } from './config/config';
+<<<<<<< Updated upstream
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,6 +18,10 @@ import getUsersList from './helper/getData/getUsersList';
 import { actionCreators } from './store';
 import { RootState } from './store/reducers';
 import './styles/home.css';
+=======
+
+import './styles/home.scss';
+>>>>>>> Stashed changes
 
 const Home = () => (
   //   const state = useSelector((state: RootState) => state.bank);
