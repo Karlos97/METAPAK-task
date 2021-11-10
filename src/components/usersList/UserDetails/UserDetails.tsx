@@ -73,7 +73,7 @@ const UserDetails: React.FC = () => {
   console.log(userRepos);
   return (
     <>
-      <Spinner loading={loadingUserDetailsData} />
+      {loadingUserDetailsData && <Spinner loading={loadingUserDetailsData} />}
       {!loadingUserDetailsData && (
         <div className={classes['user-details']}>
           <h2 className={classes['user-details-header-2']}>Profile </h2>
