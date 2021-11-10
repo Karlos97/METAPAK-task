@@ -5,45 +5,12 @@ import Layout from './components/Layout/Layout';
 import UserDetails from './components/usersList/UserDetails/UserDetails';
 import {
   appNamePathUsedInRouting,
-  bookDetailsPathUsedInRouting,
+  userDetailsPathUsedInRouting,
 } from './config/config';
-<<<<<<< Updated upstream
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Logo } from './assets/logo';
-import { Title } from './components';
-import { Button } from './components/Button';
-import getUsersList from './helper/getData/getUsersList';
-import { actionCreators } from './store';
-import { RootState } from './store/reducers';
-import './styles/home.css';
-=======
 
 import './styles/home.scss';
->>>>>>> Stashed changes
 
-const Home = () => (
-  //   const state = useSelector((state: RootState) => state.bank);
-  //   const dispatch = useDispatch();
-
-  //   const { increment, decrement, reset } = bindActionCreators(
-  //     actionCreators,
-  //     dispatch
-  //   );
-
-  //   return (
-  //     <div className="App">
-  //       <Logo height={200} width={200} />
-  //       <div className="counter-container">
-  //         <Button onClick={() => decrement(1)}> - </Button>
-  //         <Title>{state}</Title>
-  //         <Button onClick={() => increment(1)}> + </Button>
-  //       </div>
-  //       <Button onClick={() => reset()}> reset </Button>
-  //     </div>
-  //   );
-
+const Home: React.FC = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
@@ -53,7 +20,7 @@ const Home = () => (
         <Route path="/" exact>
           <UsersList />
         </Route>
-        <Route path={bookDetailsPathUsedInRouting}>
+        <Route path={userDetailsPathUsedInRouting}>
           <UserDetails />
         </Route>
       </Switch>
