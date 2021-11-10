@@ -4,14 +4,22 @@ import { useParams, useHistory } from 'react-router-dom';
 import Spinner from '../../UI/Spinner/Spinner';
 import classes from './UserDetails.module.scss';
 import getUserDetails from '../../../helper/getData/getUserDetails';
-import { setLoadingUserDetailsDataStatus } from '../../../store/actions/notificationActions';
+import {
+  setLoadingUserDetailsDataStatus,
+  setLoadingUserReposDataStatus,
+} from '../../../store/actions/notificationActions';
 import UserCardTop from '../UserCardTop/UserCardTop';
 import {
   selectShowLoadingUserDetailsData,
+  selectShowLoadingUserReposData,
   selectShowUserDetailsFetchStatus,
 } from '../../../store/selectors/selectors';
 import { UserListItem } from '../../../types/userType';
 import getUserRepos from '../../../helper/getData/getUserRepos';
+
+interface IUserRepos {
+  name: string;
+}
 
 const UserDetails: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,6 +27,7 @@ const UserDetails: React.FC = () => {
   const loadingUserDetailsData = useSelector(selectShowLoadingUserDetailsData);
   const userDetailsFetchStatusFailed =
     useSelector(selectShowUserDetailsFetchStatus) === 'ERROR';
+  const loadingUserReposData = useSelector(selectShowLoadingUserReposData);
   const history = useHistory();
   if (userDetailsFetchStatusFailed) {
     history.goBack();
@@ -31,9 +40,7 @@ const UserDetails: React.FC = () => {
     avatarUrl: '',
     githubUrl: '',
   });
-  const [userRepos, setUserRepos] = useState({
-    name: '',
-  });
+  const [userRepos, setUserRepos] = useState<IUserRepos[]>([{ name: '' }]);
 
   const { login, name, id, avatar_url, html_url }: UserListItem = userData;
 
@@ -64,13 +71,21 @@ const UserDetails: React.FC = () => {
         // );
         dispatch(setLoadingUserDetailsDataStatus('ERROR'));
       });
+    dispatch(setLoadingUserReposDataStatus('ONGOING'));
     getUserRepos(userId).then((repos) => {
-      console.log(repos);
-      // setUserRepos(repos);
+      setUserRepos(repos);
+      dispatch(setLoadingUserReposDataStatus('FULFILLED'));
     });
     // .catch(() => {});
   }, [dispatch, userId]);
-  console.log(userRepos);
+  const useReposLayout = userRepos?.map(({ name }, index) => (
+    <li key={`repo-list-item${index}`}>
+      <p className={classes['user-details-paragraph']}>{name}</p>
+    </li>
+  ));
+  const userReposLength =
+    userRepos?.length >= 30 ? ` Over 30` : ` ${userRepos?.length}`;
+  console.log(loadingUserReposData);
   return (
     <>
       {loadingUserDetailsData && <Spinner loading={loadingUserDetailsData} />}
@@ -85,24 +100,23 @@ const UserDetails: React.FC = () => {
             html_url={html_url}
             isUserDetails={true}
           />
-
           <h2 className={classes['user-details-header-2']}>Repositories</h2>
-          <h3 className={classes['user-details-header-3']}>
-            Repositories count:{' '}
-            <span className={classes['user-details-paragraph']}>test 1</span>
-          </h3>
-          <h3 className={classes['user-details-header-3']}>
-            Repositories list:{' '}
-            <span className={classes['user-details-paragraph']}>test 1</span>
-          </h3>
-          <ul>
-            <li>
-              <p className={classes['user-details-paragraph']}>test 1</p>
-            </li>
-            <li>
-              <p className={classes['user-details-paragraph']}>test 1</p>
-            </li>
-          </ul>
+          {loadingUserReposData && <Spinner loading={loadingUserReposData} />}
+
+          {!loadingUserReposData && (
+            <>
+              <h3 className={classes['user-details-header-3']}>
+                Repositories count:
+                <span className={classes['user-details-paragraph']}>
+                  {userReposLength}
+                </span>
+              </h3>
+              <h3 className={classes['user-details-header-3']}>
+                Repositories list:
+              </h3>
+              <ul>{useReposLayout}</ul>
+            </>
+          )}
         </div>
       )}
     </>

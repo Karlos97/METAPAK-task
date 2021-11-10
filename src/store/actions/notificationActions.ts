@@ -7,6 +7,7 @@ import {
 import {
   SET_LOADING_USERS_LIST_DATA_STATUS,
   SET_LOADING_USER_DETAILS_DATA_STATUS,
+  SET_LOADING_USER_REPOS_DATA_STATUS,
   SET_NOTIFICATION,
 } from './actionsType';
 
@@ -27,5 +28,11 @@ export const setLoadingUserDetailsDataStatus = (
   payload: string
 ): ISetLoadingUserDetailsDataStatus => ({
   type: SET_LOADING_USER_DETAILS_DATA_STATUS,
+  payload,
+});
+export const setLoadingUserReposDataStatus = (
+  payload: string
+): ISetLoadingUserDetailsDataStatus => ({
+  type: SET_LOADING_USER_REPOS_DATA_STATUS,
   payload,
 });

@@ -6,7 +6,6 @@ const getUserDetails = (username: string) =>
   axios
     .get<UserDetails>(userDetailsUrl + username)
     .then((res: AxiosResponse<UserDetails>) => {
-      console.log(`user details `, res.data);
       return res.data;
     })
     .then(({ name, login, id, avatar_url, html_url }: UserDetails) => ({

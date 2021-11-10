@@ -5,7 +5,6 @@ import User from './User/User';
 import { getAndAddUsersToUserList } from '../../store/actions/usersActions';
 import {
   selectShowLoadingUsersListData,
-  selectShowPage,
   selectUsersList,
 } from '../../store/selectors/selectors';
 import Spinner from '../UI/Spinner/Spinner';
@@ -16,15 +15,10 @@ const UsersList: React.FC = () => {
   const usersList: UserListItem[] = useSelector(selectUsersList);
   const loadingUsersListDataSatus = useSelector(selectShowLoadingUsersListData);
   const isUsersListNotEmpty = !usersList.length;
-  const page = useSelector(selectShowPage);
   useEffect(() => {
-    // if (isUsersListNotEmpty) {
     dispatch(getAndAddUsersToUserList(0));
-    console.log('dodaje');
-    // }
   }, [dispatch, isUsersListNotEmpty]);
 
-  console.log(usersList);
   const usersListLayout = usersList?.map((user) => (
     <User userListItem={user} key={user.id} />
   ));

@@ -3,6 +3,7 @@ import { NotificationType } from '../../types/notificationType';
 import {
   LOADING_USERS_LIST,
   LOADING_USER_DETAILS,
+  LOADING_USER_REPOS,
   RequestStatus,
 } from '../../types/requestsType';
 import { IStore } from '../../types/store';
@@ -17,6 +18,10 @@ export const selectShowLoadingUsersListData = ({
   requestsStatus,
 }: IStore): boolean =>
   requestsStatus[LOADING_USERS_LIST] === RequestStatus.ONGOING;
+export const selectShowLoadingUserReposData = ({
+  requestsStatus,
+}: IStore): boolean =>
+  requestsStatus[LOADING_USER_REPOS] === RequestStatus.ONGOING;
 
 export const selectShowUsersListFetchStatus = ({
   requestsStatus,
@@ -24,10 +29,9 @@ export const selectShowUsersListFetchStatus = ({
 export const selectShowUserDetailsFetchStatus = ({
   requestsStatus,
 }: IStore): string => requestsStatus[LOADING_USER_DETAILS];
-// export const selectShowDataFetchFailed = ({
-//   requestsStatus,
-// }: IStore): boolean =>
-//   requestsStatus[LOADING_USERS_LIST] === RequestStatus.ERROR;
+export const selectShowUserReposFetchStatus = ({
+  requestsStatus,
+}: IStore): string => requestsStatus[LOADING_USER_REPOS];
 
 export const selectUsersList = ({ usersList }: IStore): UserListItem[] =>
   usersList.length ? usersList : [];

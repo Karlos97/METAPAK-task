@@ -32,10 +32,10 @@ const Layout: React.FC = ({ children }) => {
     const { scrollTop, scrollHeight, clientHeight } =
       listInnerRef.current as HTMLDivElement;
 
-    if (listInnerRef.current) {
+    if (listInnerRef.current && isMainpage && !fetchingUsers) {
       const pageAtTheBottom =
         scrollTop + clientHeight >= scrollHeight - clientHeight / 4;
-      if (pageAtTheBottom && isMainpage && !fetchingUsers) {
+      if (pageAtTheBottom) {
         setFetchingUsers(true);
         dispatch(getAndAddUsersToUserList(page));
 
