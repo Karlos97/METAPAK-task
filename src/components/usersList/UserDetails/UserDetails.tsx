@@ -7,6 +7,7 @@ import getUserDetails from '../../../helper/getData/getUserDetails';
 import {
   setLoadingUserDetailsDataStatus,
   setLoadingUserReposDataStatus,
+  setNotification,
 } from '../../../store/actions/notificationActions';
 import UserCardTop from '../UserCardTop/UserCardTop';
 import {
@@ -52,23 +53,21 @@ const UserDetails: React.FC = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         setUserData(user);
-        // dispatch(
-        //   setNotification({
-        //     // isActive: true,
-        //     status: 'success',
-        //     title: 'User details fetched.',
-        //   })
-        // );
+        dispatch(
+          setNotification({
+            status: 'success',
+            title: 'User details fetched.',
+          })
+        );
         dispatch(setLoadingUserDetailsDataStatus('FULFILLED'));
       })
       .catch(() => {
-        // dispatch(
-        //   setNotification({
-        //     isActive: true,
-        //     status: 'error',
-        //     title: 'Problem with fetching user details.',
-        //   })
-        // );
+        dispatch(
+          setNotification({
+            status: 'error',
+            title: 'Problem with fetching user details.',
+          })
+        );
         dispatch(setLoadingUserDetailsDataStatus('ERROR'));
       });
     dispatch(setLoadingUserReposDataStatus('ONGOING'));
@@ -85,7 +84,6 @@ const UserDetails: React.FC = () => {
   ));
   const userReposLength =
     userRepos?.length >= 30 ? ` Over 30` : ` ${userRepos?.length}`;
-  console.log(loadingUserReposData);
   return (
     <>
       {loadingUserDetailsData && <Spinner loading={loadingUserDetailsData} />}

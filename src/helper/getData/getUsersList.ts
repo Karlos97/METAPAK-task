@@ -3,7 +3,6 @@ import { userListLink, usersPerPage } from '../../config/config';
 import { UserListItem } from '../../types/userType';
 
 const getUsersList = (since = 0): Promise<UserListItem[]> => {
-  console.log(since);
   return axios
     .get<UserListItem[]>(userListLink + `${usersPerPage}&since=${since}`)
     .then((res: AxiosResponse<UserListItem[]>) => res.data)

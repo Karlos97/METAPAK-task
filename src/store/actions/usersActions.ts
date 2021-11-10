@@ -24,21 +24,21 @@ export const getAndAddUsersToUserList =
         // dispatch(addUsersToUserList(users as UserListItem[]));
         dispatch(setLoadingUsersListDataStatus('FULFILLED'));
         dispatch(addUsersToUserList(users));
-        // dispatch(
-        //   setNotification({
-        //     status: 'success',
-        //     title: 'User list fetched.',
-        //   })
-        // );
+        dispatch(
+          setNotification({
+            status: 'success',
+            title: 'User list fetched.',
+          })
+        );
         dispatch(setPage(usersPerPage));
       })
       .catch(() => {
-        // dispatch(
-        //   setNotification({
-        //     status: 'error',
-        //     title: 'Problem with fetching user list.',
-        //   })
-        // );
+        dispatch(
+          setNotification({
+            status: 'error',
+            title: 'Problem with fetching user list.',
+          })
+        );
         dispatch(setLoadingUsersListDataStatus('ERROR'));
       });
   };

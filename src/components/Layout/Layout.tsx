@@ -6,6 +6,8 @@ import classes from './Layout.module.scss';
 import {
   selectShowNotification,
   selectShowPage,
+  selectShowUserDetailsFetchStatus,
+  selectShowUserReposFetchStatus,
   selectShowUsersListFetchStatus,
 } from '../../store/selectors/selectors';
 import {
@@ -14,7 +16,11 @@ import {
 } from '../../config/config';
 import { getAndAddUsersToUserList } from '../../store/actions/usersActions';
 import Notification from '../UI/Notification/Notification';
-import { setLoadingUsersListDataStatus } from '../../store/actions/notificationActions';
+import {
+  setLoadingUserDetailsDataStatus,
+  setLoadingUserReposDataStatus,
+  setLoadingUsersListDataStatus,
+} from '../../store/actions/notificationActions';
 
 const Layout: React.FC = ({ children }) => {
   const { pathname } = useLocation();
@@ -24,10 +30,16 @@ const Layout: React.FC = ({ children }) => {
   const [fetchingUsers, setFetchingUsers] = useState(false);
   const { status, title } = useSelector(selectShowNotification);
   const page = useSelector(selectShowPage);
-  console.log(page);
-  const showNotification =
+  const showUsersListNotification =
     useSelector(selectShowUsersListFetchStatus) === ('FULFILLED' || 'ERROR');
-
+  const showUserDetailsNotification =
+    useSelector(selectShowUserDetailsFetchStatus) === ('FULFILLED' || 'ERROR');
+  const showUserReposNotification =
+    useSelector(selectShowUserReposFetchStatus) === ('FULFILLED' || 'ERROR');
+  const totalNotificationStatus =
+    (isMainpage && showUsersListNotification) ||
+    (showUserDetailsNotification && showUserReposNotification);
+  console.log();
   const onScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } =
       listInnerRef.current as HTMLDivElement;
@@ -45,12 +57,15 @@ const Layout: React.FC = ({ children }) => {
       }
     }
   };
-  if (showNotification) {
+  setTimeout(() => {
+    dispatch(setLoadingUsersListDataStatus('IDLE'));
+  }, delayForNotificationDismiss);
+  if (showUserDetailsNotification || showUserReposNotification) {
     setTimeout(() => {
-      dispatch(setLoadingUsersListDataStatus('IDLE'));
+      dispatch(setLoadingUserDetailsDataStatus('IDLE'));
+      dispatch(setLoadingUserReposDataStatus('IDLE'));
     }, delayForNotificationDismiss);
   }
-
   const mainElementClass = isMainpage
     ? classes['user-list']
     : classes['user-details'];
@@ -59,7 +74,9 @@ const Layout: React.FC = ({ children }) => {
     <>
       <div className={classes.app} onScroll={onScroll} ref={listInnerRef}>
         <Header isMainpage={isMainpage} />
-        {showNotification && <Notification status={status} title={title} />}
+        {totalNotificationStatus && (
+          <Notification status={status} title={title} />
+        )}
         <main className={mainElementClass}>{children}</main>
       </div>
     </>
