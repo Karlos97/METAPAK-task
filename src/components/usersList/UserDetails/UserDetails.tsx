@@ -50,8 +50,6 @@ const UserDetails: React.FC = () => {
 
     getUserDetails(userId)
       .then((user) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
         setUserData(user);
         dispatch(
           setNotification({
