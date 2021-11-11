@@ -14,6 +14,6 @@ export interface UserDetails {
   username?: string;
   id: number;
   html_url?: string;
-  repositories_count: number;
-  repositories: string[];
+  repositories_count?: number;
+  repositories?: string[];
 }

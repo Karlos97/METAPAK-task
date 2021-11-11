@@ -16,12 +16,11 @@ export const addUsersToUserList = (payload: UserListItem[]): ISetUsersList => ({
 });
 
 export const getAndAddUsersToUserList =
-  (page: number) => (dispatch: Dispatch) => {
+  (page: number) =>
+  (dispatch: Dispatch): void => {
     dispatch(setLoadingUsersListDataStatus('ONGOING'));
     getUsersList(page)
       .then((users) => {
-        // console.log(users)
-        // dispatch(addUsersToUserList(users as UserListItem[]));
         dispatch(setLoadingUsersListDataStatus('FULFILLED'));
         dispatch(addUsersToUserList(users));
         dispatch(

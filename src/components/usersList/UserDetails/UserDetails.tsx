@@ -43,7 +43,7 @@ const UserDetails: React.FC = () => {
   });
   const [userRepos, setUserRepos] = useState<IUserRepos[]>([{ name: '' }]);
 
-  const { login, name, id, avatar_url, html_url }: UserListItem = userData;
+  const { login, id, avatar_url, html_url }: UserListItem = userData;
 
   useEffect(() => {
     dispatch(setLoadingUserDetailsDataStatus('ONGOING'));
