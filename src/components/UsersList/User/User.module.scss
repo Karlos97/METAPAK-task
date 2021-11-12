@@ -1,6 +1,6 @@
 @import '../../../styles/shared-variables.module.scss';
 @import '../../../styles//view-port.scss';
-$border-radius: 4px;
+
 @mixin user-title {
   display: block;
   margin: 1rem 0 0.5rem 3rem;
@@ -9,6 +9,8 @@ $border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
 }
+
+$border-radius: 4px;
 
 .user {
   width: 30rem;

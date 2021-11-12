@@ -25,13 +25,16 @@ export const selectShowLoadingUserReposData = ({
 
 export const selectShowUsersListFetchStatus = ({
   requestsStatus,
-}: IStore): string => requestsStatus[LOADING_USERS_LIST];
+}: IStore): boolean =>
+  requestsStatus[LOADING_USERS_LIST] === ('FULFILLED' || 'ERROR');
 export const selectShowUserDetailsFetchStatus = ({
   requestsStatus,
-}: IStore): string => requestsStatus[LOADING_USER_DETAILS];
+}: IStore): boolean =>
+  requestsStatus[LOADING_USER_DETAILS] === ('FULFILLED' || 'ERROR');
 export const selectShowUserReposFetchStatus = ({
   requestsStatus,
-}: IStore): string => requestsStatus[LOADING_USER_REPOS];
+}: IStore): boolean =>
+  requestsStatus[LOADING_USER_REPOS] === ('FULFILLED' || 'ERROR');
 
 export const selectUsersList = ({ usersList }: IStore): UserListItem[] =>
   usersList.length ? usersList : [];
@@ -40,25 +43,4 @@ export const selectShowNotification = ({
   notification,
 }: IStore): NotificationType => notification;
 
-// export const selectIsError = ({ notification }: IStore): boolean =>
-//   notification.status !== 'error';
 export const selectShowPage = ({ page }: IStore): number => page;
-// export const selectUserItemById = (
-//   { usersList }: IStore,
-//   id: number
-// ): UserListItem[] => usersList.filter((user) => user.id === id);
-
-// export const selectShowStartIndex = ({ usersOptions }: StateType): number =>
-// usersOptions.startIndex;
-
-// export const selectShowLoadingUserDetailsData = ({ notification }) =>
-//   notification?.loadingUserDetailsData;
-// export const selectShowLoadingUsersListData = ({ notification }) =>
-//   notification?.loadingUsersListData;
-
-// export const selectShowUsersList = ({ usersOptions }) => usersOptions.userList;
-
-// export const selectShowNotification = ({ notification }) => notification;
-
-// export const selectShowStartIndex = ({ usersOptions }) =>
-//   usersOptions.startIndex;

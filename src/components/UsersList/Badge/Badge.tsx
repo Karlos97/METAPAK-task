@@ -1,3 +1,8 @@
+import {
+  badgeMultipleAssignTeamA,
+  badgeMultipleAssignTeamB,
+} from '../../../config/config';
+
 interface Props {
   id: number;
   classes: { [key: string]: string };
@@ -5,8 +10,8 @@ interface Props {
 
 const Badge: React.FC<Props> = ({ id, classes }: Props) => {
   let badge = null;
-  const multipleOfFour = id % 4 === 0;
-  const multipleOfSix = id % 6 === 0;
+  const multipleOfFour = id % badgeMultipleAssignTeamA === 0;
+  const multipleOfSix = id % badgeMultipleAssignTeamB === 0;
   if (multipleOfFour) {
     badge = (
       <span className={classes['user-card-top-description-rank-badge-a']}>

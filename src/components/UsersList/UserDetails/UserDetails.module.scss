@@ -1,10 +1,10 @@
 @import '../../../styles//view-port.scss';
 @import '../../../styles/shared-variables.module.scss';
+
 .user-details {
   width: 35rem;
   background-color: white;
   padding: 20px;
-
   &-header-2 {
     @include alignItemsCenter;
     margin: 0;
@@ -17,9 +17,6 @@
     }
   }
   &-header-3 {
-    @include respond(tab-port) {
-      // width: 80rem;
-    }
     @include respond(phone) {
       font-size: $unspecified-phone-media-font-size-small;
     }

@@ -7,7 +7,7 @@ export interface UserListItem {
   html_url?: string;
 }
 
-export interface UserDetails {
+export interface UserDetailsType {
   login: string;
   avatar_url: string;
   name?: string;

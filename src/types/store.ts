@@ -1,11 +1,11 @@
 import { NotificationType } from './notificationType';
 import { RequestsState } from './requestsType';
-import { UserDetails, UserListItem } from './userType';
+import { UserDetailsType, UserListItem } from './userType';
 
 export interface IStore {
   notification: NotificationType;
   usersList: Array<UserListItem>;
-  userDetails: Map<string, UserDetails>;
+  userDetails: Map<string, UserDetailsType>;
   requestsStatus: RequestsState;
   page: number;
 }

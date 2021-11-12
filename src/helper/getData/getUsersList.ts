@@ -5,13 +5,12 @@ import { UserListItem } from '../../types/userType';
 const getUsersList = (since = 0): Promise<UserListItem[]> => {
   return axios
     .get<UserListItem[]>(userListLink + `${usersPerPage}&since=${since}`)
-    .then((res: AxiosResponse<UserListItem[]>) => res.data)
-    .then((res) =>
-      res?.map(({ login, id, avatar_url, html_url }) => ({
+    .then((res: AxiosResponse<UserListItem[]>) =>
+      res.data?.map(({ login, id, avatar_url, html_url }) => ({
         login: login,
         id: id,
-        avatar_url: avatar_url,
-        html_url: html_url,
+        avatar_url,
+        html_url,
       }))
     );
 };

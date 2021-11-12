@@ -16,7 +16,7 @@ const UsersList: React.FC = () => {
   const loadingUsersListDataSatus = useSelector(selectShowLoadingUsersListData);
   const isUsersListNotEmpty = !usersList.length;
   useEffect(() => {
-    dispatch(getAndAddUsersToUserList(0));
+    dispatch(getAndAddUsersToUserList());
   }, [dispatch, isUsersListNotEmpty]);
 
   const usersListLayout = usersList?.map((user) => (

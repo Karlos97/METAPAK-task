@@ -1,11 +1,11 @@
 @import '../../styles/shared-variables.module.scss';
-@mixin flex-options {
-}
+
 .app {
   overflow-y: scroll;
   height: 100vh;
   background-color: $background-color;
 }
+
 .user {
   &-list {
     display: flex;

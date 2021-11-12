@@ -1,3 +1,5 @@
+@import '../../../styles/shared-variables.module.scss';
+
 .notification {
   position: absolute;
   top: 0;
@@ -9,7 +11,6 @@
   align-items: center;
   color: white;
   margin: 0;
-
   &-header,
   &-paragraph {
     font-size: 1rem;
@@ -18,9 +19,9 @@
 }
 
 .error {
-  background-color: #690000;
+  background-color: $notification-error;
 }
 
 .success {
-  background-color: #1ad1b9;
+  background-color: $notification-fulfilled;
 }

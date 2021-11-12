@@ -7,12 +7,10 @@ import reducerRoot from './store/reducers/index';
 
 const store = createStore(reducerRoot, applyMiddleware(thunk));
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Home />
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <Home />
+  </Provider>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));

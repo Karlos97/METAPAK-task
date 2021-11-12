@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
-import UsersList from './components/usersList/UsersList';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import UsersList from './components/UsersList/UsersList';
 import Layout from './components/Layout/Layout';
-import UserDetails from './components/usersList/UserDetails/UserDetails';
+import UserDetails from './components/UsersList/UserDetails/UserDetails';
 import {
   appNamePathUsedInRouting,
   userDetailsPathUsedInRouting,
@@ -15,9 +15,6 @@ const Home: React.FC = () => (
     <Layout>
       <Switch>
         <Route path={appNamePathUsedInRouting} exact>
-          <Redirect to="/" />
-        </Route>
-        <Route path="/" exact>
           <UsersList />
         </Route>
         <Route path={userDetailsPathUsedInRouting}>

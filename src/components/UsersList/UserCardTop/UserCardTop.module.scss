@@ -1,11 +1,13 @@
 @import '../../../styles//view-port.scss';
 @import '../../../styles/shared-variables.module.scss';
+
 @mixin badge-style {
   font-size: $font-font-size-small;
   padding: 2px 4px 2px 4px;
   border-radius: 2px;
   margin-right: 10px;
 }
+
 @mixin user-card-flex-style {
   display: flex;
   flex-direction: row;
@@ -29,7 +31,6 @@
     }
     &-rank {
       @include alignItemsCenter;
-
       height: 22px;
       margin: 6px 0 24px 0;
     }
@@ -41,7 +42,6 @@
   @include respond(tab-port) {
     padding: 10px; // zmienilem narzucony padding, poniewaz napisy sie rozjezdzaly
   }
-
   &-description {
     margin: 0;
     &-login {
@@ -84,11 +84,9 @@
         margin: 0;
       }
     }
-
     &-image {
       height: 12px;
       margin: 0 2px 0 1px;
-      // color: $secondary-text-color;
     }
     &-page {
       cursor: pointer;

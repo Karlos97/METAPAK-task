@@ -1,14 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import { userDetailsUrl } from '../../config/config';
-import { UserDetails } from '../../types/userType';
+import { UserDetailsType } from '../../types/userType';
 
-const getUserDetails = (username: string): Promise<UserDetails> =>
+const getUserDetails = (username: string): Promise<UserDetailsType> =>
   axios
-    .get<UserDetails>(userDetailsUrl + username)
-    .then((res: AxiosResponse<UserDetails>) => {
-      return res.data;
-    })
-    .then(({ name, login, id, avatar_url, html_url }: UserDetails) => ({
+    .get<UserDetailsType>(userDetailsUrl + username)
+    .then((res: AxiosResponse<UserDetailsType>) => res.data)
+    .then(({ name, login, id, avatar_url, html_url }: UserDetailsType) => ({
       login,
       name,
       id,

@@ -16,7 +16,7 @@ export const addUsersToUserList = (payload: UserListItem[]): ISetUsersList => ({
 });
 
 export const getAndAddUsersToUserList =
-  (page: number) =>
+  (page = 0) =>
   (dispatch: Dispatch): void => {
     dispatch(setLoadingUsersListDataStatus('ONGOING'));
     getUsersList(page)

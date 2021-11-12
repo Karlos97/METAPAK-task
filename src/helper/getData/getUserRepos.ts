@@ -7,9 +7,8 @@ interface IUserRepo {
 const getUserRepos = (username: string): Promise<IUserRepo[]> =>
   axios
     .get<IUserRepo[]>(`${userReposUrl}${username}/repos`)
-    .then((res: AxiosResponse<IUserRepo[]>) => res.data)
-    .then((res) =>
-      res?.map(({ name }: IUserRepo) => ({
+    .then((res: AxiosResponse<IUserRepo[]>) =>
+      res.data?.map(({ name }: IUserRepo) => ({
         name,
       }))
     );
