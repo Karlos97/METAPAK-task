@@ -1,9 +1,9 @@
 import React from 'react';
-import Badge from '../Badge/Badge';
-import GithubLogo from '../../../images/github/GitHub-Mark-32px.png';
-import { UserListItem } from '../../../types/userType';
-import UserImage from '../UserImage/UserImage';
+import Badge from '../UsersList/Badge/Badge';
 import classes from './UserCardTop.module.scss';
+import { UserListItem } from '../../types/userType';
+import UserImage from '../UsersList/UserImage/UserImage';
+import GithubLogo from '../../images/github/GitHub-Mark-32px.png';
 
 interface IUserDetails {
   isUserDetails: boolean;

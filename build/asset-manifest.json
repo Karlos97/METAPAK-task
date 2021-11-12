@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/METAPAK-task/static/css/main.f82aabe9.chunk.css",
+    "main.js": "/METAPAK-task/static/js/main.0f69aed7.chunk.js",
+    "main.js.map": "/METAPAK-task/static/js/main.0f69aed7.chunk.js.map",
+    "runtime-main.js": "/METAPAK-task/static/js/runtime-main.ec762d69.js",
+    "runtime-main.js.map": "/METAPAK-task/static/js/runtime-main.ec762d69.js.map",
+    "static/js/2.90eeb365.chunk.js": "/METAPAK-task/static/js/2.90eeb365.chunk.js",
+    "static/js/2.90eeb365.chunk.js.map": "/METAPAK-task/static/js/2.90eeb365.chunk.js.map",
+    "index.html": "/METAPAK-task/index.html",
+    "static/css/main.f82aabe9.chunk.css.map": "/METAPAK-task/static/css/main.f82aabe9.chunk.css.map",
+    "static/js/2.90eeb365.chunk.js.LICENSE.txt": "/METAPAK-task/static/js/2.90eeb365.chunk.js.LICENSE.txt",
+    "static/media/about.e20417ee.svg": "/METAPAK-task/static/media/about.e20417ee.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ec762d69.js",
+    "static/js/2.90eeb365.chunk.js",
+    "static/css/main.f82aabe9.chunk.css",
+    "static/js/main.0f69aed7.chunk.js"
+  ]
+}

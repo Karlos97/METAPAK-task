@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './User.module.scss';
 import NavButton from '../../UI/NavButton/NavButton';
-import UserCardTop from '../UserCardTop/UserCardTop';
+import UserCardTop from '../../UserCardTop/UserCardTop';
 import { UserListItem } from '../../../types/userType';
 import defaultUserImage from '../../../images/about.svg';
 

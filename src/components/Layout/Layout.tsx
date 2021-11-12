@@ -11,6 +11,7 @@ import {
   selectShowUsersListFetchStatus,
 } from '../../store/selectors/selectors';
 import {
+  appNamePathUsedInRouting,
   delayForNextFetch,
   delayForNotificationDismiss,
 } from '../../config/config';
@@ -26,7 +27,7 @@ const pageHeightDivisorUsedToFetchNextDataBundle = 4;
 
 const Layout: React.FC = ({ children }) => {
   const { pathname } = useLocation();
-  const isMainpage = pathname === '/';
+  const isMainpage = pathname === appNamePathUsedInRouting;
 
   const listInnerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();

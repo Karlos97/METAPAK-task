@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Spinner from '../../UI/Spinner/Spinner';
+import Spinner from '../UI/Spinner/Spinner';
 import classes from './UserDetails.module.scss';
-import getUserDetails from '../../../helper/getData/getUserDetails';
+import getUserDetails from '../../helper/getData/getUserDetails';
 import {
   setLoadingUserDetailsDataStatus,
   setLoadingUserReposDataStatus,
   setNotification,
-} from '../../../store/actions/notificationActions';
+} from '../../store/actions/notificationActions';
 import UserCardTop from '../UserCardTop/UserCardTop';
 import {
   selectShowLoadingUserDetailsData,
   selectShowLoadingUserReposData,
-} from '../../../store/selectors/selectors';
-import { UserDetailsType, UserListItem } from '../../../types/userType';
-import getUserRepos from '../../../helper/getData/getUserRepos';
-import { defaultUserReposFetchAmount } from '../../../config/config';
-import defaultUserImage from '../../../images/about.svg';
+} from '../../store/selectors/selectors';
+import { UserDetailsType, UserListItem } from '../../types/userType';
+import getUserRepos from '../../helper/getData/getUserRepos';
+import { defaultUserReposFetchAmount } from '../../config/config';
+import defaultUserImage from '../../images/about.svg';
 
 interface IUserRepos {
   name: string;
@@ -120,7 +120,7 @@ const UserDetails: React.FC = () => {
               <h3 className={classes['user-details-header-3']}>
                 Repositories list:
               </h3>
-              {userReposLayout ? <ul>{userReposLayout}</ul> : null}
+              {userReposLayout.length ? <ul>{userReposLayout}</ul> : null}
             </>
           )}
         </div>

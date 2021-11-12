@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Header.module.scss';
 import GithubLogo from '../../../images/github/GitHub-Mark-32px.png';
 import NavButton from '../../UI/NavButton/NavButton';
+import { appNamePathUsedInRouting } from '../../../config/config';
 
 const Header: React.FC<{ isMainpage: boolean }> = ({ isMainpage }) => (
   <header className={classes['app-header']}>
@@ -10,7 +11,10 @@ const Header: React.FC<{ isMainpage: boolean }> = ({ isMainpage }) => (
     </h1>
     <div className={classes['app-header-block']}>
       {!isMainpage && (
-        <NavButton buttonClass={classes['back-button']} destinationPath="/">
+        <NavButton
+          buttonClass={classes['back-button']}
+          destinationPath={appNamePathUsedInRouting}
+        >
           Back
         </NavButton>
       )}
