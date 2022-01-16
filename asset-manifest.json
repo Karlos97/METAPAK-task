@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/METAPAK-task/static/css/main.8ef30491.chunk.css",
-    "main.js": "/METAPAK-task/static/js/main.b13efed2.chunk.js",
-    "main.js.map": "/METAPAK-task/static/js/main.b13efed2.chunk.js.map",
+    "main.css": "/METAPAK-task/static/css/main.ddc0c4f3.chunk.css",
+    "main.js": "/METAPAK-task/static/js/main.63387f5c.chunk.js",
+    "main.js.map": "/METAPAK-task/static/js/main.63387f5c.chunk.js.map",
     "runtime-main.js": "/METAPAK-task/static/js/runtime-main.ec762d69.js",
     "runtime-main.js.map": "/METAPAK-task/static/js/runtime-main.ec762d69.js.map",
     "static/js/2.f2be1e1a.chunk.js": "/METAPAK-task/static/js/2.f2be1e1a.chunk.js",
     "static/js/2.f2be1e1a.chunk.js.map": "/METAPAK-task/static/js/2.f2be1e1a.chunk.js.map",
     "index.html": "/METAPAK-task/index.html",
-    "static/css/main.8ef30491.chunk.css.map": "/METAPAK-task/static/css/main.8ef30491.chunk.css.map",
+    "static/css/main.ddc0c4f3.chunk.css.map": "/METAPAK-task/static/css/main.ddc0c4f3.chunk.css.map",
     "static/js/2.f2be1e1a.chunk.js.LICENSE.txt": "/METAPAK-task/static/js/2.f2be1e1a.chunk.js.LICENSE.txt",
     "static/media/about.e20417ee.svg": "/METAPAK-task/static/media/about.e20417ee.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ec762d69.js",
     "static/js/2.f2be1e1a.chunk.js",
-    "static/css/main.8ef30491.chunk.css",
-    "static/js/main.b13efed2.chunk.js"
+    "static/css/main.ddc0c4f3.chunk.css",
+    "static/js/main.63387f5c.chunk.js"
   ]
 }
