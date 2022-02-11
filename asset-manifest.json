@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/METAPAK-task/static/css/main.ddc0c4f3.chunk.css",
-    "main.js": "/METAPAK-task/static/js/main.63387f5c.chunk.js",
-    "main.js.map": "/METAPAK-task/static/js/main.63387f5c.chunk.js.map",
+    "main.js": "/METAPAK-task/static/js/main.2871b5a9.chunk.js",
+    "main.js.map": "/METAPAK-task/static/js/main.2871b5a9.chunk.js.map",
     "runtime-main.js": "/METAPAK-task/static/js/runtime-main.ec762d69.js",
     "runtime-main.js.map": "/METAPAK-task/static/js/runtime-main.ec762d69.js.map",
     "static/js/2.f2be1e1a.chunk.js": "/METAPAK-task/static/js/2.f2be1e1a.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.ec762d69.js",
     "static/js/2.f2be1e1a.chunk.js",
     "static/css/main.ddc0c4f3.chunk.css",
-    "static/js/main.63387f5c.chunk.js"
+    "static/js/main.2871b5a9.chunk.js"
   ]
 }
